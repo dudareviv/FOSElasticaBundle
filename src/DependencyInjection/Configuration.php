@@ -151,6 +151,7 @@ class Configuration implements ConfigurationInterface
                 ->end()
                 ->append($this->getIdNode())
                 ->append($this->getPropertiesNode())
+                ->append($this->getMetaNode())
                 ->append($this->getDynamicTemplateNode())
                 ->append($this->getSourceNode())
                 ->append($this->getRoutingNode())
@@ -189,6 +190,21 @@ class Configuration implements ConfigurationInterface
             ->scalarNode('path')->end()
             ->end()
         ;
+
+        return $node;
+    }
+
+    /**
+     * Returns the array node used for "_meta".
+     */
+    private function getMetaNode()
+    {
+        $node = $this->createTreeBuilderNode('_meta');
+
+        $node
+            ->prototype('variable')
+            ->treatNullLike([])
+            ->end();
 
         return $node;
     }

@@ -327,6 +327,7 @@ class FOSElasticaExtension extends Extension
                 'properties',
                 '_all',
                 '_id',
+                '_meta',
                 '_parent',
                 '_routing',
                 '_source',
